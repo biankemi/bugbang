@@ -1,18 +1,31 @@
-package router
+package routers
 
 import (
 	"net/http"
 
+	"github.com/biankemi/bugbang/controllers"
 	"github.com/gin-gonic/gin"
 )
 
+// SetupRouter sss
 func SetupRouter() *gin.Engine {
 	router := gin.Default()
 
-	router.GET("/index", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl", gin.H{
-			"title": "Main website",
-		})
+	// 前台
+	frontend := router.Group("/v1")
+	{
+		frontend.GET("/sendCode", controllers.SendCode)
+		frontend.GET("/login", controllers.Login)
+	}
+
+	router.GET("/someJSON", func(c *gin.Context) {
+		data := map[string]interface{}{
+			"lang": "GO语言",
+			"tag":  "<br>",
+		}
+
+		// 输出 : {"lang":"GO\u8bed\u8a00","tag":"\u003cbr\u003e"}
+		c.AsciiJSON(http.StatusOK, data)
 	})
 
 	return router
