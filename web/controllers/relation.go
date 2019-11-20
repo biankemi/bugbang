@@ -7,10 +7,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// List 关系列表
-func List(c *gin.Context) {
-
-	list := models.Relation.RelationList()
-	c.SecureJSON(http.StatusOK, list)
+// RelationList 关系列表
+func RelationList(c *gin.Context) {
+	var re models.Relation
+	list, _ := re.List()
+	c.JSON(http.StatusOK, list)
 	return
 }

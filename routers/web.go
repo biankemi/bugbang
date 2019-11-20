@@ -14,9 +14,24 @@ func SetupRouter() *gin.Engine {
 	// 前台
 	frontend := router.Group("/v1")
 	{
-		frontend.GET("/sendCode", controllers.SendCode)
-		frontend.GET("/login", controllers.Login)
-		frontend.POST("/user/edit/:id", controllers.UserEdit)
+		user := frontend.Group("/user")
+		{
+			user.GET("/sendCode", controllers.SendCode)
+			user.GET("/login", controllers.Login)
+			user.POST("/edit/:id", controllers.UserEdit)
+		}
+
+		relation := frontend.Group("/relation")
+		{
+			relation.GET("/list", controllers.RelationList)
+		}
+
+		userRelation := frontend.Group("/user-relation")
+		{
+			userRelation.GET("/list", controllers.UserRelationList)
+			userRelation.GET("/create", controllers.UserRelationCreate)
+		}
+
 	}
 
 	router.GET("/someJSON", func(c *gin.Context) {

@@ -10,8 +10,8 @@ type Relation struct {
 	Name string `json:"name"`
 }
 
-//RelationList 关系列表
-func (Relation) RelationList() (relations []Relation, err error) {
+//List 关系列表
+func (r Relation) List() (relations []Relation, err error) {
 	db.Conn.Find(&relations)
 	return
 }
