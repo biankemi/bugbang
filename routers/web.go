@@ -3,7 +3,7 @@ package routers
 import (
 	"net/http"
 
-	"github.com/biankemi/bugbang/controllers"
+	"github.com/biankemi/bugbang/web/controllers"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,6 +16,7 @@ func SetupRouter() *gin.Engine {
 	{
 		frontend.GET("/sendCode", controllers.SendCode)
 		frontend.GET("/login", controllers.Login)
+		frontend.POST("/user/edit/:id", controllers.UserEdit)
 	}
 
 	router.GET("/someJSON", func(c *gin.Context) {

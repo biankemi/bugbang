@@ -19,8 +19,27 @@ type User struct {
 }
 
 // Login xxx
-func (user User) Login() error {
+func (user User) Login() (info User, err error) {
+	count := 0
+	if err = db.Conn.Where("tel = ?", user.Tel).First(&info).Count(&count).Error; err != nil {
+		return info, err
+	}
+	if count > 0 {
+		return info, nil
+	}
+	db.Conn.Create(&info)
+	return
+}
 
-	db.Conn.Create(&user)
+func (user User) getRow(tel string) (userInfo User, err error) {
+	if err = db.Conn.Where("tel = ?", tel).First(&userInfo).Error; err != nil {
+		return
+	}
+	return
+}
+
+// Edit 修改
+func (user User) Edit(id int) error {
+	db.Conn.Model(&user).Updates(&user)
 	return nil
 }
