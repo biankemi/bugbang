@@ -19,16 +19,16 @@ type User struct {
 }
 
 // Login xxx
-func (user User) Login() (info User, err error) {
+func (user User) Login() error {
 	count := 0
-	if err = db.Conn.Where("tel = ?", user.Tel).First(&info).Count(&count).Error; err != nil {
-		return info, err
+	if error := db.Conn.Table("users").Where("tel = ?", user.Tel).Count(&count).Error; error != nil {
+		return error
 	}
 	if count > 0 {
-		return info, nil
+		return nil
 	}
-	db.Conn.Create(&info)
-	return
+	db.Conn.Create(&user)
+	return nil
 }
 
 func (user User) getRow(tel string) (userInfo User, err error) {
@@ -40,6 +40,6 @@ func (user User) getRow(tel string) (userInfo User, err error) {
 
 // Edit 修改
 func (user User) Edit(id int) error {
-	db.Conn.Model(&user).Updates(&user)
+	db.Conn.Model(&user).Where("id = ?", id).Updates(&user)
 	return nil
 }

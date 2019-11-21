@@ -34,13 +34,13 @@ func Login(c *gin.Context) {
 		return
 	}
 	user := models.User{Name: tel, Tel: tel, RegisterDate: time.Now()}
-	info, error := user.Login()
+	error := user.Login()
 	if error != nil {
 		c.SecureJSON(http.StatusOK, error)
 		return
 	}
-	c.SetCookie("user_tel", info.Tel, 3600, "/", "127.0.0.1", false, true)
-	c.SecureJSON(http.StatusOK, info)
+	c.SetCookie("user_tel", tel, 3600, "/", "127.0.0.1", false, true)
+	c.JSON(http.StatusOK, gin.H{"msg": "success"})
 	return
 }
 

@@ -28,8 +28,20 @@ func SetupRouter() *gin.Engine {
 
 		userRelation := frontend.Group("/user-relation")
 		{
-			userRelation.GET("/list", controllers.UserRelationList)
-			userRelation.GET("/create", controllers.UserRelationCreate)
+			userRelation.GET("/list/:user_id", controllers.UserRelationList)
+			userRelation.POST("/create", controllers.UserRelationCreate)
+			userRelation.POST("/edit", controllers.UserRelationEdit)
+			userRelation.POST("/delete", controllers.UserRelationDel)
+		}
+
+		broadcast := frontend.Group("/post")
+		{
+			broadcast.GET("/list", controllers.BroadcastList)
+			broadcast.POST("/create", controllers.BroadcastCreate)
+			broadcast.POST("/update/:id", controllers.BroadcastEdit)
+			broadcast.POST("/like", controllers.DoLike)
+			broadcast.POST("/comment", controllers.DoComment)
+			broadcast.POST("/reward", controllers.DoReward)
 		}
 
 	}

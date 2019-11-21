@@ -7,10 +7,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var r models.Relation
+
 // RelationList 关系列表
 func RelationList(c *gin.Context) {
-	var re models.Relation
-	list, _ := re.List()
+
+	list, _ := r.List()
 	c.JSON(http.StatusOK, list)
 	return
 }
