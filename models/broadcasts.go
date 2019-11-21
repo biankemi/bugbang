@@ -9,23 +9,23 @@ import (
 
 // Broadcast 广播
 type Broadcast struct {
-	ID            int    `json:"id"`
-	Title         string `form:"title" json:"title" gorm:"column:title"`
-	Content       string `form:"content" json:"content" gorm:"column:content"`
-	Distance      string `form:"distance" json:"distance" gorm:"column:distance"`
-	Longitude     string `form:"longitude" json:"longitude" gorm:"column:longitude"`
-	Latitude      string `form:"latitude" json:"latitude" gorm:"column:latitude"`
-	Integral      int    `form:"integral" json:"integral" gorm:"column:integral"`
-	Num           int    `form:"num" json:"num" gorm:"column:num"`
-	EffectiveTime string `form:"effective" json:"effective" gorm:"column:effective"`
-	IsRandom      int    `form:"is_random" json:"is_random" gorm:"column:is_random"`
-	CategoryID    int    `form:"category_id" json:"category_id" gorm:"column:category_id"`
-	UserID        int    `form:"user_id" json:"user_id" gorm:"column:user_id"`
-	ViewCount     int    `form:"view_count" json:"view_count" gorm:"column:view_count"`
-	LikeCount     int    `form:"like_count" json:"like_count" gorm:"column:like_count"`
-	UnlikeCount   int    `form:"unlike_count" json:"unlike_count" gorm:"column:unlike_count"`
-	CommentCount  int    `form:"comment_count" json:"comment_count" gorm:"column:comment_count"`
-	CreateDate    time.Time
+	ID            int       `json:"id"`
+	Title         string    `form:"title" json:"title" gorm:"column:title"`
+	Content       string    `form:"content" json:"content" gorm:"column:content"`
+	Distance      string    `form:"distance" json:"distance" gorm:"column:distance"`
+	Longitude     string    `form:"longitude" json:"longitude" gorm:"column:longitude"`
+	Latitude      string    `form:"latitude" json:"latitude" gorm:"column:latitude"`
+	Integral      int       `form:"integral" json:"integral" gorm:"column:integral"`
+	Num           int       `form:"num" json:"num" gorm:"column:num"`
+	EffectiveTime string    `form:"effective" json:"effective" gorm:"column:effective"`
+	IsRandom      int       `form:"is_random" json:"is_random" gorm:"column:is_random"`
+	CategoryID    int       `form:"category_id" json:"category_id" gorm:"column:category_id"`
+	UserID        int       `form:"user_id" json:"user_id" gorm:"column:user_id"`
+	ViewCount     int       `form:"view_count" json:"view_count" gorm:"column:view_count"`
+	LikeCount     int       `form:"like_count" json:"like_count" gorm:"column:like_count"`
+	UnlikeCount   int       `form:"unlike_count" json:"unlike_count" gorm:"column:unlike_count"`
+	CommentCount  int       `form:"comment_count" json:"comment_count" gorm:"column:comment_count"`
+	CreateDate    time.Time `time_format:"2006-01-02 15:04:05"`
 }
 
 //List 关系列表

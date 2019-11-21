@@ -15,7 +15,7 @@ type User struct {
 	Tel            string    `gorm:"default:''" json:"tel"`
 	CompanyAddress string    `gorm:"default:''" json:"company_address"`
 	HomeAddress    string    `jgorm:"default:''" son:"home_address"`
-	RegisterDate   time.Time `json:"register_date"`
+	RegisterDate   time.Time `time_format:"2006-01-02 15:04:05" json:"register_date"`
 }
 
 // Login xxx

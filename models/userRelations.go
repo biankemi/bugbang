@@ -12,8 +12,8 @@ type UserRelation struct {
 	UserID     int       `json:"user_id"`
 	ReUserID   int       `json:"re_user_id"`
 	RelationID int       `json:"relation_id"`
-	CreateDate time.Time `json:"create_date" gorm:"default:'0000-00-00 00:00:00'"` //'创建日期'
-	DeleteDate time.Time `json:"delete_date" gorm:"default:'0000-00-00 00:00:00'"` //'创建日期'
+	CreateDate time.Time `json:"create_date" time_format:"2006-01-02 15:04:05"` //'创建日期'
+	DeleteDate time.Time `json:"delete_date" time_format:"2006-01-02 15:04:05"` //'创建日期'
 }
 
 //List 关系列表
